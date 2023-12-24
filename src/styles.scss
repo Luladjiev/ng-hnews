@@ -4,10 +4,12 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  max-width: 1280px;
+  margin: 0 auto;
+  position: relative;
 }
 
 body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
-  padding-top: var(--mat-toolbar-standard-height);
 }
