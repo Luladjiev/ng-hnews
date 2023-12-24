@@ -1,0 +1,42 @@
+<!--<a mat-flat-button routerLink="/page-two">Page two</a>-->
+
+<ng-template #success>
+  <mat-list>
+    @for (story of topStories(); track story.story_id) {
+      <mat-list-item>
+        <span matListItemTitle>{{ story.title }}</span>
+      </mat-list-item>
+
+      @if (!$last) {
+        <mat-divider></mat-divider>
+      }
+    } @empty {
+      <mat-list-item>No stories</mat-list-item>
+    }
+  </mat-list>
+</ng-template>
+
+@switch (status()) {
+  @case ('loading') {
+    <div class="loader">
+      <mat-spinner />
+    </div>
+  }
+  @case ('error') {
+    <p>Oops... :(</p>
+    <p>{{ error() }}</p>
+  }
+  @case ('success') {
+    <ng-container [ngTemplateOutlet]="success"></ng-container>
+  }
+}
+
+<mat-paginator
+  class="paginator"
+  showFirstLastButtons
+  [pageSize]="hitsPerPage()"
+  [pageIndex]="page()"
+  [length]="numberHits()"
+  hidePageSize
+  (page)="onPageChange($event)"
+></mat-paginator>

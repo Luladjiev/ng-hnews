@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  height: calc(
+    100% - var(--mat-toolbar-standard-height) - var(
+        --mat-paginator-container-size
+      )
+  );
+  overflow: auto;
+
+  .paginator {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .loader {
+    padding: 50px 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
