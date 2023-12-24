@@ -1,11 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { FrontPageService } from '../../data/front-page/front-page.service';
 import { RouterLink } from '@angular/router';
-import { AsyncPipe, NgTemplateOutlet } from '@angular/common';
+import {
+  AsyncPipe,
+  DatePipe,
+  NgTemplateOutlet,
+  SlicePipe,
+} from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatLineModule } from '@angular/material/core';
+import { DateAgoPipe } from '../../../../shared/pipes/date-ago.pipe';
 
 @Component({
   selector: 'hn-front-page',
@@ -18,6 +25,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     MatButtonModule,
     MatPaginatorModule,
     MatProgressSpinnerModule,
+    DatePipe,
+    SlicePipe,
+    MatLineModule,
+    DateAgoPipe,
   ],
   providers: [FrontPageService],
   templateUrl: './front-page.component.html',

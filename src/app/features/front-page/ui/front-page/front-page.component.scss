@@ -7,6 +7,17 @@
   );
   overflow: auto;
 
+  .url {
+    max-width: 250px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .paginator {
     position: absolute;
     bottom: 0;
@@ -19,5 +30,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
+}
+
+@media only screen and (max-width: 960px) {
+  :host {
+    .url {
+      max-width: 200px;
+    }
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  :host {
+    .url {
+      display: none !important;
+    }
   }
 }

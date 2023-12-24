@@ -1,10 +1,29 @@
-<!--<a mat-flat-button routerLink="/page-two">Page two</a>-->
-
 <ng-template #success>
   <mat-list>
     @for (story of topStories(); track story.story_id) {
       <mat-list-item>
-        <span matListItemTitle>{{ story.title }}</span>
+        <a
+          matListItemTitle
+          [routerLink]="['item', story.story_id]"
+          [title]="story.title"
+          >{{ story.title }}</a
+        >
+
+        <a
+          class="url"
+          matListItemMeta
+          target="_blank"
+          rel="noreferrer noopener"
+          [title]="story.url"
+          [href]="story.url"
+        >
+          {{ story.url }}
+        </a>
+
+        <div matListItemLine>
+          <!---->{{ story.points }} points by {{ story.author }} |
+          {{ story.created_at | dateAgo }} | {{ story.num_comments }} comments
+        </div>
       </mat-list-item>
 
       @if (!$last) {

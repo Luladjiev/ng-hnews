@@ -5,7 +5,12 @@ import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 
 interface Story {
   story_id: number;
+  url: string;
   title: string;
+  points: number;
+  author: string;
+  num_comments: number;
+  created_at: string;
 }
 
 interface Response {
