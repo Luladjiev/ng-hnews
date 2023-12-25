@@ -9,10 +9,10 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'page-two',
+    path: 'item/:itemId',
     loadComponent: () =>
-      import('./features/page-two/page-two.component').then(
-        (m) => m.PageTwoComponent
+      import('./features/item/ui/item/item.component').then(
+        (m) => m.ItemComponent
       ),
   },
 ];

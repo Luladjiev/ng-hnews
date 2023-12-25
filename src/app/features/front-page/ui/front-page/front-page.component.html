@@ -15,16 +15,18 @@
               >{{ story.title }}</a
             >
 
-            <a
-              class="url"
-              matListItemMeta
-              target="_blank"
-              rel="noreferrer noopener"
-              [title]="story.url"
-              [href]="story.url"
-            >
-              {{ story.url }}
-            </a>
+            @if (story.url) {
+              <a
+                class="url"
+                matListItemMeta
+                target="_blank"
+                rel="noreferrer noopener"
+                [title]="story.url"
+                [href]="story.url"
+              >
+                {{ story.url }}
+              </a>
+            }
 
             <div matListItemLine>
               <!---->{{ story.points }} points by {{ story.author }}

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @Component({
@@ -11,4 +11,9 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 export class LoaderComponent {
   @Input()
   state: 'loading' | 'error' | 'success' = 'loading';
+
+  @HostBinding('class')
+  get hostClass() {
+    return this.state;
+  }
 }

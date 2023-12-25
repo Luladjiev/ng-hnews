@@ -1,0 +1,23 @@
+<hn-loader [state]="status()">
+  @switch (status()) {
+    @case ('error') {
+      <h1>Not found :(</h1>
+    }
+    @case ('success') {
+      @if (item()?.url) {
+        <a
+          [href]="item()?.url"
+          class="mat-headline-5"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          {{ item()?.title }}
+        </a>
+      } @else {
+        <div class="mat-headline-5">{{ item()?.title }}</div>
+      }
+
+      <p class="mat-body-1" [innerHTML]="item()?.text"></p>
+    }
+  }
+</hn-loader>
