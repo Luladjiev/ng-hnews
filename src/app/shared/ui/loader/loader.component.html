@@ -1,0 +1,10 @@
+@switch (state) {
+  @case ('loading') {
+    <div class="loader">
+      <mat-spinner />
+    </div>
+  }
+  @default {
+    <ng-content />
+  }
+}

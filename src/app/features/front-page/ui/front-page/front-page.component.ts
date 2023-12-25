@@ -13,6 +13,7 @@ import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatLineModule } from '@angular/material/core';
 import { DateAgoPipe } from '../../../../shared/pipes/date-ago.pipe';
+import { LoaderComponent } from '../../../../shared/ui/loader/loader.component';
 
 @Component({
   selector: 'hn-front-page',
@@ -29,8 +30,8 @@ import { DateAgoPipe } from '../../../../shared/pipes/date-ago.pipe';
     SlicePipe,
     MatLineModule,
     DateAgoPipe,
+    LoaderComponent,
   ],
-  providers: [FrontPageService],
   templateUrl: './front-page.component.html',
   styleUrl: './front-page.component.scss',
 })
@@ -38,11 +39,12 @@ export class FrontPageComponent {
   private readonly frontPageSvc = inject(FrontPageService);
 
   status = this.frontPageSvc.status;
-  topStories = this.frontPageSvc.stories;
+  stories = this.frontPageSvc.stories;
   error = this.frontPageSvc.error;
   page = this.frontPageSvc.page;
   numberHits = this.frontPageSvc.numberHits;
   hitsPerPage = this.frontPageSvc.hitsPerPage;
+
   page$ = this.frontPageSvc.goToPage$;
 
   onPageChange($event: PageEvent) {

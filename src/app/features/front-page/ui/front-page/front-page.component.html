@@ -1,54 +1,48 @@
-<ng-template #success>
-  <mat-list>
-    @for (story of topStories(); track story.story_id) {
-      <mat-list-item>
-        <a
-          matListItemTitle
-          [routerLink]="['item', story.story_id]"
-          [title]="story.title"
-          >{{ story.title }}</a
-        >
-
-        <a
-          class="url"
-          matListItemMeta
-          target="_blank"
-          rel="noreferrer noopener"
-          [title]="story.url"
-          [href]="story.url"
-        >
-          {{ story.url }}
-        </a>
-
-        <div matListItemLine>
-          <!---->{{ story.points }} points by {{ story.author }}
-          {{ story.created_at | dateAgo }} | {{ story.num_comments }} comments
-        </div>
-      </mat-list-item>
-
-      @if (!$last) {
-        <mat-divider></mat-divider>
-      }
-    } @empty {
-      <mat-list-item>No stories</mat-list-item>
+<hn-loader [state]="status()">
+  @switch (status()) {
+    @case ('error') {
+      <p>Oops... :(</p>
+      <p>{{ error() }}</p>
     }
-  </mat-list>
-</ng-template>
+    @case ('success') {
+      <mat-list>
+        @for (story of stories(); track story.story_id) {
+          <mat-list-item>
+            <a
+              matListItemTitle
+              [routerLink]="['item', story.story_id]"
+              [title]="story.title"
+              >{{ story.title }}</a
+            >
 
-@switch (status()) {
-  @case ('loading') {
-    <div class="loader">
-      <mat-spinner />
-    </div>
+            <a
+              class="url"
+              matListItemMeta
+              target="_blank"
+              rel="noreferrer noopener"
+              [title]="story.url"
+              [href]="story.url"
+            >
+              {{ story.url }}
+            </a>
+
+            <div matListItemLine>
+              <!---->{{ story.points }} points by {{ story.author }}
+              {{ story.created_at | dateAgo }} |
+              {{ story.num_comments }} comments
+            </div>
+          </mat-list-item>
+
+          @if (!$last) {
+            <mat-divider></mat-divider>
+          }
+        } @empty {
+          <mat-list-item>No stories</mat-list-item>
+        }
+      </mat-list>
+    }
   }
-  @case ('error') {
-    <p>Oops... :(</p>
-    <p>{{ error() }}</p>
-  }
-  @case ('success') {
-    <ng-container [ngTemplateOutlet]="success"></ng-container>
-  }
-}
+</hn-loader>
 
 <mat-paginator
   class="paginator"
