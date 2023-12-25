@@ -15,4 +15,11 @@ export const routes: Routes = [
         (m) => m.ItemComponent
       ),
   },
+  {
+    path: 'about',
+    loadComponent: () =>
+      import('./features/about/ui/about/about.component').then(
+        (m) => m.AboutComponent
+      ),
+  },
 ];
