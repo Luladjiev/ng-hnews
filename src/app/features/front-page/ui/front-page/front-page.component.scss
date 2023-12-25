@@ -5,7 +5,7 @@
         --mat-paginator-container-size
       )
   );
-  overflow: auto;
+  width: 100%;
 
   .url {
     max-width: 250px;
@@ -19,14 +19,13 @@
   }
 
   .paginator {
-    position: absolute;
+    position: sticky;
     bottom: 0;
-    width: 100%;
   }
 
   .loader {
-    padding: 50px 0;
     width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
